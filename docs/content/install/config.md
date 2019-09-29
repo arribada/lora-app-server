@@ -115,6 +115,18 @@ dsn="postgres://localhost/loraserver_as?sslmode=disable"
 # App Server and / or applying migrations.
 automigrate=true
 
+# Max open connections.
+#
+# This sets the max. number of open connections that are allowed in the
+# PostgreSQL connection pool (0 = unlimited).
+max_open_connections=0
+
+# Max idle connections.
+#
+# This sets the max. number of idle connections in the PostgreSQL connection
+# pool (0 = no idle connections are retained).
+max_idle_connections=2
+
 
 # Redis settings
 #
@@ -419,7 +431,7 @@ tls_key=""
 
 # Key Encryption Key (KEK) configuration.
 #
-# The KEK meganism is used to encrypt the session-keys sent from the
+# The KEK mechanism is used to encrypt the session-keys sent from the
 # join-server to the network-server.
 #
 # The LoRa App Server join-server will use the NetID of the requesting
