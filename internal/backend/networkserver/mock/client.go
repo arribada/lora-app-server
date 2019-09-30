@@ -2,6 +2,7 @@ package mock
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -222,6 +223,7 @@ func (n *Client) DeleteServiceProfile(ctx context.Context, in *ns.DeleteServiceP
 
 // CreateRoutingProfile method.
 func (n *Client) CreateRoutingProfile(ctx context.Context, in *ns.CreateRoutingProfileRequest, opts ...grpc.CallOption) (*ns.CreateRoutingProfileResponse, error) {
+	fmt.Printf("send %+v \n", in.RoutingProfile)
 	n.CreateRoutingProfileChan <- *in
 	return &n.CreateRoutingProfileResponse, nil
 }
