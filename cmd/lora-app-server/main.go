@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"strings"
 
@@ -62,11 +61,6 @@ func main() {
 	for _, pair := range os.Environ() {
 		d := strings.SplitN(pair, "=", 2)
 		os.Setenv(strings.ReplaceAll(strings.ReplaceAll(d[0], "_", "."), "..", "_"), strings.ReplaceAll(d[1], ";", ":"))
-	}
-	if os.Getenv("DEBUG") != "" {
-		for _, pair := range os.Environ() {
-			fmt.Println("pair", pair)
-		}
 	}
 	cmd.Execute(version)
 }

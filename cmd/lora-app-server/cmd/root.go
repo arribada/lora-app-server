@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bytes"
-	"fmt"
 	"io/ioutil"
 	"reflect"
 	"strings"
@@ -122,8 +121,6 @@ func initConfig() {
 	if config.C.ApplicationServer.Integration.Backend != "" {
 		config.C.ApplicationServer.Integration.Enabled = []string{config.C.ApplicationServer.Integration.Backend}
 	}
-
-	fmt.Printf("config.C %+v \n\n", config.C)
 }
 
 func viperBindEnvs(iface interface{}, parts ...string) {
