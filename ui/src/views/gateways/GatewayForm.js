@@ -73,7 +73,7 @@ class GatewayBoardForm extends Component {
           margin="normal"
           value={this.props.board.fineTimestampKey || ""}
           onChange={this.onChange}
-          helperText="The fine-timestamp AES decryption key. When set, LoRa Server will decrypt the fine-timestamp. This is only available for v2 gateways with geolocation capabilities. (optional)"
+          helperText="The fine-timestamp AES decryption key. When set, ChirpStack Network Server will decrypt the fine-timestamp. This is only available for v2 gateways with geolocation capabilities. (optional)"
           fullWidth
         />
       </FormControl>
@@ -304,7 +304,7 @@ class GatewayForm extends FormComponent {
             Select the network-server to which the gateway will connect. When no network-servers are available in the dropdown, make sure a service-profile exists for this organization. 
           </FormHelperText>
         </FormControl>}
-        <FormControl fullWidth margin="normal">
+        {this.state.object.gatewayProfileID && <FormControl fullWidth margin="normal">
           <FormLabel className={this.props.classes.formLabel}>Gateway-profile</FormLabel>
           <AutocompleteSelect
             id="gatewayProfileID"
@@ -320,9 +320,9 @@ class GatewayForm extends FormComponent {
             }}
           />
           <FormHelperText>
-            An optional gateway-profile which can be assigned to a gateway. This configuration can be used to automatically re-configure the gateway when LoRa Gateway Bridge is configured so that it manages the packet-forwarder configuration.
+            An optional gateway-profile which can be assigned to a gateway. This configuration can be used to automatically re-configure the gateway when ChirpStack Gateway Bridge is configured so that it manages the packet-forwarder configuration.
           </FormHelperText>
-        </FormControl>
+        </FormControl>}
         <FormGroup>
           <FormControlLabel
             label="Gateway discovery enabled"
@@ -336,7 +336,7 @@ class GatewayForm extends FormComponent {
             }
           />
           <FormHelperText>
-            When enabled (and LoRa Server is configured with the gateway discover feature enabled), the gateway will send out periodical pings to test its coverage by other gateways in the same network.
+            When enabled (and ChirpStack Network Server is configured with the gateway discover feature enabled), the gateway will send out periodical pings to test its coverage by other gateways in the same network.
           </FormHelperText>
         </FormGroup>
         <TextField
