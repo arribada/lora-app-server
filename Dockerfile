@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-FROM --platform=$BUILDPLATFORM golang:1.12-alpine AS development
-=======
-FROM golang:1.13-alpine AS development
->>>>>>> master
+FROM --platform=$BUILDPLATFORM golang:1.13-alpine AS development
 
 ENV PROJECT_PATH=/chirpstack-application-server
 ENV PATH=$PATH:$PROJECT_PATH/build
@@ -22,18 +18,11 @@ COPY --from=tonistiigi/xx:golang / /
 # Bring TARGETPLATFORM to the build scope
 ARG TARGETPLATFORM
 
-<<<<<<< HEAD
-# RUN make
+RUN make
 
-# FROM alpine:latest AS production
+FROM alpine:latest AS production
 
-# WORKDIR /root/
-# RUN apk --no-cache add ca-certificates
-# COPY --from=development /lora-app-server/build/lora-app-server .
-# ENTRYPOINT ["./lora-app-server"]
-=======
 WORKDIR /root/
 RUN apk --no-cache add ca-certificates
 COPY --from=development /chirpstack-application-server/build/chirpstack-application-server .
 ENTRYPOINT ["./chirpstack-application-server"]
->>>>>>> master
