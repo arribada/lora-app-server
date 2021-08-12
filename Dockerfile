@@ -12,12 +12,6 @@ COPY . $PROJECT_PATH
 WORKDIR $PROJECT_PATH
 
 RUN make dev-requirements ui-requirements
-
-# Install TARGETPLATFORM parser to translate its value to GOOS, GOARCH, and GOARM
-COPY --from=tonistiigi/xx:golang / /
-# Bring TARGETPLATFORM to the build scope
-ARG TARGETPLATFORM
-
 RUN make
 
 FROM alpine:3.13.2 AS production
